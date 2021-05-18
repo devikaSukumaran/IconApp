@@ -8,6 +8,7 @@
 import Foundation
 
 protocol IconDataFetcher : AnyObject {
+    var dataReceiver : IconDataReceivalAnnouncer? { get set }
     func getIconList()
 }
 
@@ -17,11 +18,12 @@ protocol IconDataReceivalAnnouncer : AnyObject {
 }
 
 final class NetworkManager : IconDataFetcher {
-    weak var dataReceiverDelegate : IconDataReceivalAnnouncer?
     
     private var network: DataFetchable = Network()
     
-    //MARK: IconDataFetcher methods
+    //MARK: IconDataFetcher 
+    weak var dataReceiver : IconDataReceivalAnnouncer?
+    
     func getIconList() {
         network.fetch(from: NetworkConstants.baseUrl.rawValue) { [weak self] result in
             switch(result) {
@@ -30,14 +32,14 @@ final class NetworkManager : IconDataFetcher {
                 var iconData : IconData
                 do {
                     iconData = try JSONDecoder().decode(IconData.self, from: data)
-                    self?.dataReceiverDelegate?.received(icons: iconData.icons)
+                    self?.dataReceiver?.received(icons: iconData.icons)
                 } catch {
-                    self?.dataReceiverDelegate?.errorWhileFetchingIcons()
+                    self?.dataReceiver?.errorWhileFetchingIcons()
                 }
                 break
                 
             case .failure( _):
-                self?.dataReceiverDelegate?.errorWhileFetchingIcons()
+                self?.dataReceiver?.errorWhileFetchingIcons()
                 break
             }
         }

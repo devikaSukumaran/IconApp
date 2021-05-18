@@ -21,17 +21,19 @@ protocol IconListUIUpdater : AnyObject {
 class IconListViewModel : IconLister, IconDataReceivalAnnouncer {
     private var apiCaller : IconDataFetcher = NetworkManager()
     
-    //MARK: IconLister implementation
+    //MARK: IconLister 
     var icons : Icons = Icons()
     weak var uiUpdater : IconListUIUpdater?
     
     func beginAPICall() {
-        self.apiCaller.getIconList()
+        apiCaller.dataReceiver = self
+        apiCaller.getIconList()
     }
     //TODO: pagination
     
     //MARK: IconDataReceivalAnnouncer
     func received(icons: Icons) {
+        print("data received")
         if icons.count > 0 {
             self.icons = icons
         }
