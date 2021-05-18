@@ -14,7 +14,3 @@ struct Icon : Codable {
 }
 
 typealias Icons = [Icon]
-
-struct IconData : Codable {
-    let icons : Icons
-}

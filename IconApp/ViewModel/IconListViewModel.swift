@@ -33,7 +33,6 @@ class IconListViewModel : IconLister, IconDataReceivalAnnouncer {
     
     //MARK: IconDataReceivalAnnouncer
     func received(icons: Icons) {
-        print("data received")
         if icons.count > 0 {
             self.icons = icons
         }
