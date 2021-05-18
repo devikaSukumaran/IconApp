@@ -19,8 +19,9 @@ class IconListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.placeholderView.isHidden = false
-        self.loader.startAnimating()
+        placeholderView.isHidden = false
+        loader.startAnimating()
+        
         iconsViewModel.uiUpdater = self
         iconsViewModel.beginAPICall()
     }
@@ -29,7 +30,10 @@ class IconListViewController: UIViewController {
 extension IconListViewController : UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let page = UserDefaults.standard.value(forKey: Constants.resultsPageKey) as? Int {
-            return iconsViewModel.icons.count > page*Constants.numberOfResultsPerPage ? page*Constants.numberOfResultsPerPage : iconsViewModel.icons.count
+            guard let icons = iconsViewModel.icons else {
+                return 0
+            }
+            return icons.count > page*Constants.numberOfResultsPerPage ? page*Constants.numberOfResultsPerPage : icons.count
         }
         return 0
     }
@@ -38,8 +42,9 @@ extension IconListViewController : UITableViewDataSource, UITableViewDelegate, U
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.iconsListTableCellName) as? IconListCell else {
             fatalError(Constants.errorMessageForMissingCells)
         }
-        let iconData = self.iconsViewModel.icons[indexPath.row]
-        cell.populate(with: iconData)
+        if let iconData = self.iconsViewModel.icons?[indexPath.row] {
+            cell.populate(with: iconData)
+        }
         return cell
     }
     

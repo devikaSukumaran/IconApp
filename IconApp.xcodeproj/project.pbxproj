@@ -21,7 +21,7 @@
 		BD4E24842653CFD8000E6352 /* IconListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4E24832653CFD8000E6352 /* IconListCell.swift */; };
 		BD4E24862653D2C9000E6352 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4E24852653D2C9000E6352 /* Constants.swift */; };
 		BD4E24882653D428000E6352 /* IconData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4E24872653D428000E6352 /* IconData.swift */; };
-		BD4ECB1026542BA4001A0AB7 /* IconAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4ECB0F26542BA4001A0AB7 /* IconAppTests.swift */; };
+		BD4ECB1026542BA4001A0AB7 /* IconViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4ECB0F26542BA4001A0AB7 /* IconViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +52,7 @@
 		BD4E24852653D2C9000E6352 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BD4E24872653D428000E6352 /* IconData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconData.swift; sourceTree = "<group>"; };
 		BD4ECB0D26542BA4001A0AB7 /* IconAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IconAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BD4ECB0F26542BA4001A0AB7 /* IconAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconAppTests.swift; sourceTree = "<group>"; };
+		BD4ECB0F26542BA4001A0AB7 /* IconViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconViewModelTests.swift; sourceTree = "<group>"; };
 		BD4ECB1126542BA4001A0AB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,7 +157,7 @@
 		BD4ECB0E26542BA4001A0AB7 /* IconAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				BD4ECB0F26542BA4001A0AB7 /* IconAppTests.swift */,
+				BD4ECB0F26542BA4001A0AB7 /* IconViewModelTests.swift */,
 				BD4ECB1126542BA4001A0AB7 /* Info.plist */,
 			);
 			path = IconAppTests;
@@ -281,7 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD4ECB1026542BA4001A0AB7 /* IconAppTests.swift in Sources */,
+				BD4ECB1026542BA4001A0AB7 /* IconViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,18 +7,22 @@
 
 import Foundation
 
-protocol IconDataFetcher : AnyObject {
+protocol IconDataFetcher {
     var dataReceiver : IconDataReceivalAnnouncer? { get set }
     func getIconList()
 }
 
 protocol IconDataReceivalAnnouncer : AnyObject {
-    func received(icons : Icons)
+    func received(icons : Icons?)
     func errorWhileFetchingIcons()
 }
 
 final class NetworkManager : IconDataFetcher {
-    private var network: DataFetchable = Network()
+    private let network: DataFetchable
+    
+    init(with network: DataFetchable = Network()) {
+        self.network = network
+    }
     
     //MARK: IconDataFetcher 
     weak var dataReceiver : IconDataReceivalAnnouncer?

@@ -8,5 +8,5 @@
 import Foundation
 
 struct IconData : Codable {
-    let icons : Icons
+    let icons : Icons?
 }
