@@ -25,8 +25,9 @@ class IconListCell : UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        let edgeInset = Constants.IconCellUI.contentViewEdgeInset
         contentView.frame = contentView.frame.inset(by:
-                                UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8))
+                                                        UIEdgeInsets(top: edgeInset, left: edgeInset, bottom: edgeInset, right: edgeInset))
     }
     
     func populate(with values: Icon) {
@@ -66,15 +67,15 @@ extension IconListCell : CellUpdater, CellUICustomiser {
     
     //MARK: CellUICustomiser
     internal func addRoundedCorners() {
-        self.iconImageView?.layer.cornerRadius = CGFloat(Constants.cornerRadiusForRoundedEdges)
-        self.contentView.layer.cornerRadius = CGFloat(Constants.cornerRadiusForRoundedEdges)
+        self.iconImageView?.layer.cornerRadius = Constants.IconCellUI.cornerRadiusForRoundedEdges
+        self.contentView.layer.cornerRadius = Constants.IconCellUI.cornerRadiusForRoundedEdges
     }
     
     internal func addShadow() {
-        self.contentView.layer.shadowOffset = CGSize (width: 0.0, height: 2.0)
-        self.contentView.layer.shadowColor = UIColor.systemGray.cgColor
-        self.contentView.layer.shadowOpacity = 0.25
-        self.contentView.layer.shadowRadius = 4
+        self.contentView.layer.shadowOffset = CGSize (width: Constants.IconCellUI.Shadow.width, height: Constants.IconCellUI.Shadow.height)
+        self.contentView.layer.shadowColor = Constants.IconCellUI.Shadow.color
+        self.contentView.layer.shadowOpacity = Constants.IconCellUI.Shadow.opacity
+        self.contentView.layer.shadowRadius = Constants.IconCellUI.Shadow.radius
         self.contentView.layer.masksToBounds = false
     }
 }
