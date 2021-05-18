@@ -13,13 +13,20 @@ protocol CellUpdater : UITableViewCell {
 }
 
 protocol CellUICustomiser : UITableViewCell {
-    func applyCircularBorder()
+    func addRoundedCorners()
+    func addShadow()
 }
 
 class IconListCell : UITableViewCell {
     @IBOutlet weak var title : UILabel!
     @IBOutlet weak var subTitle : UILabel!
     @IBOutlet weak var iconImageView : UIImageView!
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8))
+    }
     
     func populate(with values: Icon) {
         updateCell(with: values)
@@ -32,7 +39,8 @@ extension IconListCell : CellUpdater, CellUICustomiser {
         self.title.text = icon.title
         self.subTitle.text = icon.subtitle
         downloadImage(from: icon.image)
-        applyCircularBorder()
+        addRoundedCorners()
+        addShadow()
     }
     
     internal func downloadImage(from imageUrl : String) {
@@ -56,8 +64,16 @@ extension IconListCell : CellUpdater, CellUICustomiser {
     }
     
     //MARK: CellUICustomiser
-    internal func applyCircularBorder() {
-        self.iconImageView?.layer.cornerRadius = 10
-        self.contentView.layer.cornerRadius = 10
+    internal func addRoundedCorners() {
+        self.iconImageView?.layer.cornerRadius = CGFloat(Constants.cornerRadiusForRoundedEdges)
+        self.contentView.layer.cornerRadius = CGFloat(Constants.cornerRadiusForRoundedEdges)
+    }
+    
+    internal func addShadow() {
+        self.contentView.layer.shadowOffset = CGSize (width: 0.0, height: 2.0)
+        self.contentView.layer.shadowColor = UIColor.systemGray.cgColor
+        self.contentView.layer.shadowOpacity = 0.4
+        self.contentView.layer.shadowRadius = 4
+        self.contentView.layer.masksToBounds = false
     }
 }

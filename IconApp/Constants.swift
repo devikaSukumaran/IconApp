@@ -13,4 +13,5 @@ struct Constants {
     static let placeholderImageName = "Placeholder"
     static let numberOfResultsPerPage = 10
     static let resultsPageKey = "resultsPage"
+    static let cornerRadiusForRoundedEdges = 8
 }
