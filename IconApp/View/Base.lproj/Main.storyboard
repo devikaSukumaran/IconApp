@@ -23,9 +23,10 @@
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LXl-nG-c7E">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LXl-nG-c7E">
                                 <rect key="frame" x="20" y="218" width="374" height="658"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <inset key="separatorInset" minX="4" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="iconListTableViewCell" rowHeight="104" id="6Tz-oH-IR3" customClass="IconListCell" customModule="IconApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="24.5" width="374" height="104"/>
@@ -62,6 +63,7 @@
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="RlS-fu-hTN" firstAttribute="centerY" secondItem="fIl-Sf-kbt" secondAttribute="centerY" id="1jQ-A2-m8l"/>
                                                 <constraint firstItem="C62-DP-PmM" firstAttribute="centerY" secondItem="fIl-Sf-kbt" secondAttribute="centerY" id="Ofw-nG-iW4"/>
@@ -80,7 +82,7 @@
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="MFl-IB-Bli"/>
-                                    <outlet property="delegate" destination="8bC-Xf-vdC" id="fDk-y0-u9j"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="kdb-dP-cPK"/>
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Custom Icons" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AAq-H6-Zpl">

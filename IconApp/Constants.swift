@@ -11,4 +11,6 @@ struct Constants {
     static let iconsListTableCellName = "iconListTableViewCell"
     static let errorMessageForMissingCells = "Tableview cell not found"
     static let placeholderImageName = "Placeholder"
+    static let numberOfResultsPerPage = 10
+    static let resultsPageKey = "resultsPage"
 }

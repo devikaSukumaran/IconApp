@@ -11,10 +11,12 @@ protocol IconLister : AnyObject {
     var icons : Icons { get set }
     var uiUpdater : IconListUIUpdater? { get set }
     func beginAPICall()
+    func loadNextSetOfIconResults()
 }
 
 protocol IconListUIUpdater : AnyObject {
     func updateListUI()
+    func loadNextBatchOfIcons(for indices: [IndexPath])
     func displayErrorMessage()
 }
 
@@ -30,12 +32,38 @@ class IconListViewModel : IconLister, IconDataReceivalAnnouncer {
         apiCaller.getIconList()
     }
     //TODO: pagination
+    func loadNextSetOfIconResults() {
+        
+        guard let page = UserDefaults.standard.value(forKey: Constants.resultsPageKey) as? Int else {
+            return
+        }
+        let startingIndex = page*Constants.numberOfResultsPerPage
+        
+        if startingIndex < self.icons.count {
+            var endingIndex = (startingIndex+Constants.numberOfResultsPerPage)-1
+            if endingIndex > self.icons.count {
+                endingIndex = self.icons.count-1
+            }
+            var nextIndices = [IndexPath]()
+            if self.icons.count >= endingIndex {
+                for index in startingIndex...endingIndex {
+                    nextIndices.append(IndexPath(row: index, section: 0))
+                }
+            }else {
+                for index in startingIndex...self.icons.count {
+                    nextIndices.append(IndexPath(row: index, section: 0))
+                }
+            }
+            
+            UserDefaults.standard.setValue(page+1, forKey: Constants.resultsPageKey)
+            self.uiUpdater?.loadNextBatchOfIcons(for: nextIndices)
+        }
+    }
     
     //MARK: IconDataReceivalAnnouncer
     func received(icons: Icons) {
-        if icons.count > 0 {
-            self.icons = icons
-        }
+        self.icons = icons
+        UserDefaults.standard.setValue(1, forKey: Constants.resultsPageKey)
         self.uiUpdater?.updateListUI()
     }
     
