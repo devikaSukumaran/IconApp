@@ -18,7 +18,6 @@ protocol IconDataReceivalAnnouncer : AnyObject {
 }
 
 final class NetworkManager : IconDataFetcher {
-    
     private var network: DataFetchable = Network()
     
     //MARK: IconDataFetcher 

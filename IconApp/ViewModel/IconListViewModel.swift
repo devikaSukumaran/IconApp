@@ -45,14 +45,8 @@ class IconListViewModel : IconLister, IconDataReceivalAnnouncer {
                 endingIndex = self.icons.count-1
             }
             var nextIndices = [IndexPath]()
-            if self.icons.count >= endingIndex {
-                for index in startingIndex...endingIndex {
-                    nextIndices.append(IndexPath(row: index, section: 0))
-                }
-            }else {
-                for index in startingIndex...self.icons.count {
-                    nextIndices.append(IndexPath(row: index, section: 0))
-                }
+            for index in startingIndex...endingIndex {
+                nextIndices.append(IndexPath(row: index, section: 0))
             }
             
             UserDefaults.standard.setValue(page+1, forKey: Constants.resultsPageKey)

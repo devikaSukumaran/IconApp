@@ -13,7 +13,6 @@ protocol CellUpdater : UITableViewCell {
 }
 
 class IconListCell : UITableViewCell {
-    
     @IBOutlet weak var title : UILabel!
     @IBOutlet weak var subTitle : UILabel!
     @IBOutlet weak var iconImageView : UIImageView!
@@ -24,7 +23,6 @@ class IconListCell : UITableViewCell {
 }
 
 extension IconListCell : CellUpdater {
-    
     internal func updateCell(with icon : Icon) {
         self.title.text = icon.title
         self.subTitle.text = icon.subtitle
