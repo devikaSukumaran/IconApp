@@ -22,6 +22,9 @@
                                     <constraint firstAttribute="height" constant="70" id="8w8-44-3zX"/>
                                 </constraints>
                                 <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="11S-ve-BYt"/>
+                                </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LXl-nG-c7E">
                                 <rect key="frame" x="20" y="224" width="374" height="652"/>
@@ -148,6 +151,7 @@
                         <outlet property="iconsTableView" destination="LXl-nG-c7E" id="BZq-4d-kCd"/>
                         <outlet property="loader" destination="52b-MM-Gdt" id="817-cP-rpp"/>
                         <outlet property="placeholderView" destination="ZGc-bZ-Uvh" id="cxl-QD-rED"/>
+                        <outlet property="searchBar" destination="mZT-A9-SxR" id="2xx-Oe-ONo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

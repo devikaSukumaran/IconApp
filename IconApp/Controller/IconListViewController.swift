@@ -12,6 +12,7 @@ class IconListViewController: UIViewController {
     @IBOutlet weak var loader: UIActivityIndicatorView!
     @IBOutlet weak var errorMessage: UILabel!
     @IBOutlet weak var placeholderView: UIView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     private var iconsViewModel : IconLister  = IconListViewModel()
     
@@ -25,7 +26,7 @@ class IconListViewController: UIViewController {
     }
 }
 
-extension IconListViewController : UITableViewDataSource, UITableViewDelegate {
+extension IconListViewController : UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let page = UserDefaults.standard.value(forKey: Constants.resultsPageKey) as? Int {
             return iconsViewModel.icons.count > page*Constants.numberOfResultsPerPage ? page*Constants.numberOfResultsPerPage : iconsViewModel.icons.count
@@ -52,6 +53,11 @@ extension IconListViewController : UITableViewDataSource, UITableViewDelegate {
         if ((visibleRows?.contains([0, resultsCount - 2])) != nil) {
             iconsViewModel.loadNextSetOfIconResults()
         }
+    }
+    
+    //MARK: UISearchBarDelegate
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
+        self.searchBar.endEditing(true)
     }
 }
 
