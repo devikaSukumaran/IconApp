@@ -31,7 +31,8 @@ class IconListViewModel : IconLister, IconDataReceivalAnnouncer {
         apiCaller.dataReceiver = self
         apiCaller.getIconList()
     }
-    //TODO: pagination
+    
+    //pagination
     func loadNextSetOfIconResults() {
         
         guard let page = UserDefaults.standard.value(forKey: Constants.resultsPageKey) as? Int else {

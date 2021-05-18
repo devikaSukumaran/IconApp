@@ -36,7 +36,7 @@ extension IconListViewController : UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-    //Finding scroll on tableView bottom to load next set of icons
+    //Loads next set of icons if user scrolled to the end of scrollview
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let visibleRows = iconsTableView.indexPathsForVisibleRows
         guard let page = UserDefaults.standard.value(forKey: Constants.resultsPageKey) as? Int else {
