@@ -27,15 +27,12 @@ class IconListViewController: UIViewController {
     }
 }
 
-extension IconListViewController : UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+extension IconListViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let page = UserDefaults.standard.value(forKey: Constants.resultsPageKey) as? Int {
-            guard let icons = iconsViewModel.icons else {
-                return 0
-            }
-            return icons.count > page*Constants.numberOfResultsPerPage ? page*Constants.numberOfResultsPerPage : icons.count
+        guard let icons = iconsViewModel.icons else {
+            return 0
         }
-        return 0
+        return icons.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -47,20 +44,9 @@ extension IconListViewController : UITableViewDataSource, UITableViewDelegate, U
         }
         return cell
     }
-    
-    //Loads next set of icons if user scrolled to the end of scrollview
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let visibleRows = iconsTableView.indexPathsForVisibleRows
-        guard let page = UserDefaults.standard.value(forKey: Constants.resultsPageKey) as? Int else {
-            return
-        }
-        let resultsCount = Constants.numberOfResultsPerPage*page
-        if ((visibleRows?.contains([0, resultsCount - 2])) != nil) {
-            iconsViewModel.loadNextSetOfIconResults()
-        }
-    }
-    
-    //MARK: UISearchBarDelegate
+}
+
+extension IconListViewController : UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
         self.searchBar.endEditing(true)
     }
@@ -74,12 +60,6 @@ extension IconListViewController : IconListUIUpdater {
             self.errorMessage.isHidden = true
             self.placeholderView.isHidden = true
             self.iconsTableView.reloadData()
-        }
-    }
-    
-    func loadNextBatchOfIcons(for indices: [IndexPath]) {
-        DispatchQueue.main.async {
-            self.iconsTableView.insertRows(at: indices, with: .automatic)
         }
     }
     

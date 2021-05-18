@@ -9,7 +9,6 @@ import XCTest
 @testable import IconApp
 
 class IconViewModelTests: XCTestCase {
-    let defaults = UserDefaults.init(suiteName: "test")
     var viewModel : IconLister!
     let iconListUpdater : IconListUIUpdaterMock = IconListUIUpdaterMock()
     
@@ -17,22 +16,20 @@ class IconViewModelTests: XCTestCase {
         let network = NetworkMock(for: true)
         let networkManager = NetworkManager(with: network)
         
-        viewModel = IconListViewModel(with: networkManager, userDefaultsAccessor: StandardUserDefaultsAccessor(with: defaults ?? UserDefaults.standard))
+        viewModel = IconListViewModel(with: networkManager)
         viewModel.uiUpdater = iconListUpdater
         
         viewModel.beginAPICall()
         XCTAssertEqual(viewModel.icons?.count , 1)
         XCTAssertTrue(iconListUpdater.uiUpdated)
-        XCTAssertFalse(iconListUpdater.nextBatchLoaded)
         XCTAssertFalse(iconListUpdater.displayError)
-        XCTAssertEqual(defaults?.value(forKey: Constants.resultsPageKey) as? Int , 1)
     }
     
-    func testFailure() {
+    func testAPIFailure() {
         let network = NetworkMock(for: false)
         let networkManager = NetworkManager(with: network)
         
-        viewModel = IconListViewModel(with: networkManager, userDefaultsAccessor: StandardUserDefaultsAccessor(with: defaults ?? UserDefaults.standard))
+        viewModel = IconListViewModel(with: networkManager)
         viewModel.uiUpdater = iconListUpdater
         
         viewModel.beginAPICall()
@@ -73,10 +70,6 @@ class IconListUIUpdaterMock : IconListUIUpdater {
     
     func updateListUI() {
         uiUpdated = true
-    }
-    
-    func loadNextBatchOfIcons(for indices: [IndexPath]) {
-        nextBatchLoaded = true
     }
     
     func displayErrorMessage() {

@@ -38,9 +38,11 @@ class IconListCell : UITableViewCell {
 extension IconListCell : CellUpdater, CellUICustomiser {
     //MARK: CellUpdater
     internal func updateCell(with icon : Icon) {
-        self.title.text = icon.title
-        self.subTitle.text = icon.subtitle
+        title.text = icon.title
+        subTitle.text = icon.subtitle
+        
         downloadImage(from: icon.image)
+        
         addRoundedCorners()
         addShadow()
     }
@@ -67,15 +69,15 @@ extension IconListCell : CellUpdater, CellUICustomiser {
     
     //MARK: CellUICustomiser
     internal func addRoundedCorners() {
-        self.iconImageView?.layer.cornerRadius = Constants.IconCellUI.cornerRadiusForRoundedEdges
-        self.contentView.layer.cornerRadius = Constants.IconCellUI.cornerRadiusForRoundedEdges
+        iconImageView?.layer.cornerRadius = Constants.IconCellUI.cornerRadiusForRoundedEdges
+        contentView.layer.cornerRadius = Constants.IconCellUI.cornerRadiusForRoundedEdges
     }
     
     internal func addShadow() {
-        self.contentView.layer.shadowOffset = CGSize (width: Constants.IconCellUI.Shadow.width, height: Constants.IconCellUI.Shadow.height)
-        self.contentView.layer.shadowColor = Constants.IconCellUI.Shadow.color
-        self.contentView.layer.shadowOpacity = Constants.IconCellUI.Shadow.opacity
-        self.contentView.layer.shadowRadius = Constants.IconCellUI.Shadow.radius
-        self.contentView.layer.masksToBounds = false
+        contentView.layer.shadowOffset = CGSize (width: Constants.IconCellUI.Shadow.width, height: Constants.IconCellUI.Shadow.height)
+        contentView.layer.shadowColor = Constants.IconCellUI.Shadow.color
+        contentView.layer.shadowOpacity = Constants.IconCellUI.Shadow.opacity
+        contentView.layer.shadowRadius = Constants.IconCellUI.Shadow.radius
+        contentView.layer.masksToBounds = false
     }
 }
