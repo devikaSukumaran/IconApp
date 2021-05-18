@@ -13,6 +13,10 @@
 		BD2888D02653B22400CDEA72 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD2888CE2653B22400CDEA72 /* Main.storyboard */; };
 		BD2888D22653B22600CDEA72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD2888D12653B22600CDEA72 /* Assets.xcassets */; };
 		BD2888D52653B22600CDEA72 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD2888D32653B22600CDEA72 /* LaunchScreen.storyboard */; };
+		BD2888DE2653B5AD00CDEA72 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2888DD2653B5AD00CDEA72 /* Network.swift */; };
+		BD2888E12653B6CF00CDEA72 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2888E02653B6CF00CDEA72 /* NetworkManager.swift */; };
+		BD2888E32653B6EF00CDEA72 /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2888E22653B6EE00CDEA72 /* NetworkConstants.swift */; };
+		BD2888E52653B8CD00CDEA72 /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2888E42653B8CD00CDEA72 /* Icon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		BD2888D12653B22600CDEA72 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD2888D42653B22600CDEA72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BD2888D62653B22700CDEA72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BD2888DD2653B5AD00CDEA72 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		BD2888E02653B6CF00CDEA72 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		BD2888E22653B6EE00CDEA72 /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
+		BD2888E42653B8CD00CDEA72 /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,9 +64,11 @@
 		BD2888C72653B22400CDEA72 /* IconApp */ = {
 			isa = PBXGroup;
 			children = (
+				BD2888DF2653B5B800CDEA72 /* Networking */,
+				BD2888E62653B91A00CDEA72 /* Model */,
+				BD2888DC2653B25500CDEA72 /* Controller */,
 				BD2888C82653B22400CDEA72 /* AppDelegate.swift */,
 				BD2888CA2653B22400CDEA72 /* SceneDelegate.swift */,
-				BD2888DC2653B25500CDEA72 /* Controller */,
 				BD2888CE2653B22400CDEA72 /* Main.storyboard */,
 				BD2888D12653B22600CDEA72 /* Assets.xcassets */,
 				BD2888D32653B22600CDEA72 /* LaunchScreen.storyboard */,
@@ -73,6 +83,24 @@
 				BD2888CC2653B22400CDEA72 /* ViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		BD2888DF2653B5B800CDEA72 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				BD2888DD2653B5AD00CDEA72 /* Network.swift */,
+				BD2888E02653B6CF00CDEA72 /* NetworkManager.swift */,
+				BD2888E22653B6EE00CDEA72 /* NetworkConstants.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		BD2888E62653B91A00CDEA72 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BD2888E42653B8CD00CDEA72 /* Icon.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,8 +173,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD2888E32653B6EF00CDEA72 /* NetworkConstants.swift in Sources */,
 				BD2888CD2653B22400CDEA72 /* ViewController.swift in Sources */,
+				BD2888E52653B8CD00CDEA72 /* Icon.swift in Sources */,
 				BD2888C92653B22400CDEA72 /* AppDelegate.swift in Sources */,
+				BD2888E12653B6CF00CDEA72 /* NetworkManager.swift in Sources */,
+				BD2888DE2653B5AD00CDEA72 /* Network.swift in Sources */,
 				BD2888CB2653B22400CDEA72 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
