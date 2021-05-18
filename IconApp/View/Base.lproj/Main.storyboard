@@ -98,6 +98,31 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZGc-bZ-Uvh">
+                                <rect key="frame" x="0.0" y="160" width="414" height="736"/>
+                                <subviews>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="52b-MM-Gdt">
+                                        <rect key="frame" x="197" y="358" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Something went wrong. Please try after sometime." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RtV-Fb-m4I">
+                                        <rect key="frame" x="88" y="260" width="238" height="76"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="76" id="Pfa-5O-5OH"/>
+                                            <constraint firstAttribute="width" constant="238" id="wWr-PA-8gH"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="RtV-Fb-m4I" firstAttribute="centerX" secondItem="ZGc-bZ-Uvh" secondAttribute="centerX" id="3rc-lD-Lo1"/>
+                                    <constraint firstItem="52b-MM-Gdt" firstAttribute="centerY" secondItem="ZGc-bZ-Uvh" secondAttribute="centerY" id="Qly-nS-OoP"/>
+                                    <constraint firstItem="52b-MM-Gdt" firstAttribute="centerX" secondItem="ZGc-bZ-Uvh" secondAttribute="centerX" id="dw0-aY-IjM"/>
+                                    <constraint firstItem="52b-MM-Gdt" firstAttribute="top" secondItem="RtV-Fb-m4I" secondAttribute="bottom" constant="22" id="wO4-ud-Zbc"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -106,16 +131,23 @@
                             <constraint firstItem="LXl-nG-c7E" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="1oh-RR-1wQ"/>
                             <constraint firstItem="AAq-H6-Zpl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="9ec-qd-Kxu"/>
                             <constraint firstAttribute="trailing" secondItem="mZT-A9-SxR" secondAttribute="trailing" constant="20" id="DdB-dT-ied"/>
+                            <constraint firstAttribute="bottom" secondItem="ZGc-bZ-Uvh" secondAttribute="bottom" id="GEy-Tn-XPs"/>
                             <constraint firstItem="AAq-H6-Zpl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="53" id="MdE-1Y-L6U"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="AAq-H6-Zpl" secondAttribute="trailing" constant="20" id="dZV-ns-0sk"/>
                             <constraint firstItem="LXl-nG-c7E" firstAttribute="top" secondItem="mZT-A9-SxR" secondAttribute="bottom" id="gXv-j6-p2h"/>
+                            <constraint firstItem="ZGc-bZ-Uvh" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="jxP-Uf-jmH"/>
                             <constraint firstItem="mZT-A9-SxR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="nej-a1-3gT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LXl-nG-c7E" secondAttribute="trailing" constant="20" id="qb6-Sj-u0B"/>
+                            <constraint firstItem="ZGc-bZ-Uvh" firstAttribute="top" secondItem="AAq-H6-Zpl" secondAttribute="bottom" constant="26" id="rYi-Bs-8ae"/>
+                            <constraint firstItem="ZGc-bZ-Uvh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="vtK-jV-BaY"/>
                             <constraint firstAttribute="bottom" secondItem="LXl-nG-c7E" secondAttribute="bottom" constant="20" id="wJ2-Cc-XZA"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="errorMessage" destination="RtV-Fb-m4I" id="gDS-DF-PhP"/>
                         <outlet property="iconsTableView" destination="LXl-nG-c7E" id="BZq-4d-kCd"/>
+                        <outlet property="loader" destination="52b-MM-Gdt" id="817-cP-rpp"/>
+                        <outlet property="placeholderView" destination="ZGc-bZ-Uvh" id="cxl-QD-rED"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

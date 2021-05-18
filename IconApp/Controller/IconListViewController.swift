@@ -9,11 +9,17 @@ import UIKit
 
 class IconListViewController: UIViewController {
     @IBOutlet weak var iconsTableView: UITableView!
+    @IBOutlet weak var loader: UIActivityIndicatorView!
+    @IBOutlet weak var errorMessage: UILabel!
+    @IBOutlet weak var placeholderView: UIView!
+    
     private var iconsViewModel : IconLister  = IconListViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.placeholderView.isHidden = false
+        self.loader.startAnimating()
         iconsViewModel.uiUpdater = self
         iconsViewModel.beginAPICall()
     }
@@ -53,6 +59,9 @@ extension IconListViewController : UITableViewDataSource, UITableViewDelegate {
 extension IconListViewController : IconListUIUpdater {
     func updateListUI() {
         DispatchQueue.main.async {
+            self.loader.stopAnimating()
+            self.errorMessage.isHidden = true
+            self.placeholderView.isHidden = true
             self.iconsTableView.reloadData()
         }
     }
@@ -64,6 +73,10 @@ extension IconListViewController : IconListUIUpdater {
     }
     
     func displayErrorMessage() {
-        //TODO: display error message
+        DispatchQueue.main.async {
+            self.placeholderView.isHidden = false
+            self.loader.stopAnimating()
+            self.errorMessage.isHidden = false
+        }
     }
 }

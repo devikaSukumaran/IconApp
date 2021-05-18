@@ -34,7 +34,6 @@ class IconListViewModel : IconLister, IconDataReceivalAnnouncer {
     
     //pagination
     func loadNextSetOfIconResults() {
-        
         guard let page = UserDefaults.standard.value(forKey: Constants.resultsPageKey) as? Int else {
             return
         }
