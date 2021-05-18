@@ -12,6 +12,10 @@ protocol CellUpdater : UITableViewCell {
     func downloadImage(from imageUrl : String)
 }
 
+protocol CellUICustomiser : UITableViewCell {
+    func applyCircularBorder()
+}
+
 class IconListCell : UITableViewCell {
     @IBOutlet weak var title : UILabel!
     @IBOutlet weak var subTitle : UILabel!
@@ -22,11 +26,13 @@ class IconListCell : UITableViewCell {
     }
 }
 
-extension IconListCell : CellUpdater {
+extension IconListCell : CellUpdater, CellUICustomiser {
+    //MARK: CellUpdater
     internal func updateCell(with icon : Icon) {
         self.title.text = icon.title
         self.subTitle.text = icon.subtitle
         downloadImage(from: icon.image)
+        applyCircularBorder()
     }
     
     internal func downloadImage(from imageUrl : String) {
@@ -47,5 +53,11 @@ extension IconListCell : CellUpdater {
                 break
             }
         }
+    }
+    
+    //MARK: CellUICustomiser
+    internal func applyCircularBorder() {
+        self.iconImageView?.layer.cornerRadius = 10
+        self.contentView.layer.cornerRadius = 10
     }
 }
