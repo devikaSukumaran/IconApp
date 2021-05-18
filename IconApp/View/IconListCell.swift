@@ -25,7 +25,8 @@ class IconListCell : UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8))
+        contentView.frame = contentView.frame.inset(by:
+                                UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8))
     }
     
     func populate(with values: Icon) {
@@ -72,7 +73,7 @@ extension IconListCell : CellUpdater, CellUICustomiser {
     internal func addShadow() {
         self.contentView.layer.shadowOffset = CGSize (width: 0.0, height: 2.0)
         self.contentView.layer.shadowColor = UIColor.systemGray.cgColor
-        self.contentView.layer.shadowOpacity = 0.4
+        self.contentView.layer.shadowOpacity = 0.25
         self.contentView.layer.shadowRadius = 4
         self.contentView.layer.masksToBounds = false
     }
